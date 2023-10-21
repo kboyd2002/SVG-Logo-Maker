@@ -1,8 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Triangle = require('Triangle');
-const Circle = require('Circle');
-const Square = require('Sqaure');
+const {Triangle, Circle, Square} = require('./lib/shapes');
 
 inquirer
     .prompt([
@@ -19,15 +17,41 @@ name: 'shapeColor',
 },
 {
 type: 'input',
-message: 'What Characters do you want for your logo? (NO MORE THAN 3)',
+message: 'What Text Characters do you want for your logo? (NO MORE THAN 3)',
 name: 'logoName',
 },
 {
 type: 'input',
-message: 'what color do you want the Characters?',
+message: 'what color do you want the Text?',
 name: 'textColor',
 },
 ])
+.then((response) => {
+    fs.writeFile('logo.svg', svgMaker(response), (err) =>
+      err ? console.error(err) : console.log('Commit logged!')
+    );
+});
+function svgMaker(response){
+ let shape;
+ if(response.shape === "Circle") {
+    shape = new Circle(response.shapeColor);
+ }
 
+ if(response.shape === "Triangle") {
+    shape = new Triangle(response.shapeColor);
+ }
 
+ if(response.shape === "Square") {
+    shape = new Square(response.shapeColor);
+ }
 
+return `<svg version="1.1"
+width="300" height="200"
+xmlns="http://www.w3.org/2000/svg">
+
+${shape.render()}
+
+<text x="150" y="125" font-size="60" text-anchor="middle" fill="${response.textColor}">${response.logoName}</text>
+
+</svg>`
+}
