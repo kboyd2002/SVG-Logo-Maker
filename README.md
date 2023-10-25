@@ -16,6 +16,7 @@ The SVG Generator takes in 4 user inputs and makes a simple SVG logo for whateve
 - [License](#license)
 
 ## Installation
+To use this Application , use the following command:
 ``npm i``
 
 ## Usage
