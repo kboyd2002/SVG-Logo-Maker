@@ -1,5 +1,12 @@
 # SVG-Generator
 
+## Walk Through
+
+
+https://github.com/kboyd2002/SVG-Logo-Maker/assets/145223393/1a6b115a-4569-47c5-929d-2bfe83684cee
+
+
+
 ## Description
 The SVG Generator takes in 4 user inputs and makes a simple SVG logo for whatever the need may be.
 
